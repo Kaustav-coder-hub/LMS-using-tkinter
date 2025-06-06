@@ -246,7 +246,7 @@ def student_page(student_id, student_name, logout_callback):
     # View Marks and Feedback
     def view_marks_feedback(student_id):
         # Placeholder: Replace with DB fetch logic
-        messagebox.showinfo("Marks & Feedback", "Displaying marks and feedback (demo).")
+        messagebox.showinfo("Marks & Feedback", "Displaying marks and feedback.")
         
         win = tk.Toplevel()
         win.title("Marks & Feedback")
