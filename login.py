@@ -8,7 +8,7 @@ import os
 import tkinter as tk
 from tkinter import messagebox, filedialog
 from session_utils import save_session, clear_session
- 
+from db import get_connection  # Assuming db.py is in the same directory
     
 def show_login():
     global app, email_entry, pass_entry, role_var

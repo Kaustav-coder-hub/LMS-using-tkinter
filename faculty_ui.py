@@ -8,7 +8,7 @@ from datetime import date
 from tkinter import ttk
 from attendance import mark_attendance_ui
 import mysql.connector
-
+from db import get_connection  # Assuming db.py is in the same directory
 
 def faculty_page(faculty_id, faculty_name, logout_callback):
     win = tk.Tk()

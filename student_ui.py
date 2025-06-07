@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 import mysql.connector
 import os
 import webbrowser
+from db import get_connection  # Assuming db.py is in the same directory
 
 def student_page(student_id, student_name, logout_callback):
     win = tk.Tk()

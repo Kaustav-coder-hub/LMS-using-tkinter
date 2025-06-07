@@ -1,20 +1,30 @@
-FROM python:3.9-slim
+# Use a full Debian-based image with GUI support
+FROM python:3.9-slim-bullseye
 
-# Set display env for Tkinter to work with X11
+# Install Tkinter and dependencies
+RUN apt-get update && apt-get install -y \
+    python3-tk \
+    libx11-6 \
+    libxext6 \
+    libxrender1 \
+    libxtst6 \
+    libxi6 \
+    && apt-get clean
+
+# Set environment variables to support GUI forwarding
 ENV DISPLAY=:0
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-# Install tkinter and X11 tools
-RUN apt-get update && \
-    apt-get install -y python3-tk libx11-6 && \
-    rm -rf /var/lib/apt/lists/*
-
-# Set workdir
+# Create working directory
 WORKDIR /app
 
-# Copy code
-COPY . /app
-
-# Install dependencies
+# Install Python dependencies
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy the source code
+COPY . .
+
+# Run your app
 CMD ["python", "main.py"]

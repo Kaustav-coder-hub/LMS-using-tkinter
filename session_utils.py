@@ -1,5 +1,6 @@
 # filepath: session_utils.py
 import os
+from db import get_connection
 
 SESSION_FILE = "session.txt"
 

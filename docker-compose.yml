@@ -1,20 +1,8 @@
-version: '3.8'
+# version: "3.9"
 
 services:
-  app:
-    build: .
-    container_name: lms_gui_app
-    volumes:
-      - .:/app
-      - /tmp/.X11-unix:/tmp/.X11-unix
-    environment:
-      - DISPLAY=${DISPLAY}
-    depends_on:
-      - db
-
   db:
-    image: mariadb:10.5
-    container_name: lms_db
+    image: mariadb:10.11
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 2004
@@ -22,7 +10,8 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - db_data:/var/lib/mysql
+      - ./db/lms_backup.sql:/docker-entrypoint-initdb.d/lms_backup.sql
 
 volumes:
-  mysql_data:
+  db_data:
