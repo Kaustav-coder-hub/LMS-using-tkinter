@@ -4061,11 +4061,11 @@ CREATE TABLE `faculty` (
 LOCK TABLES `faculty` WRITE;
 /*!40000 ALTER TABLE `faculty` DISABLE KEYS */;
 INSERT INTO `faculty` VALUES
-(1,'Mr Bose Neogi','neogi@gmail.com','2004'),
-(2,'Dr. Rohan Mishra','rohan.mishra@example.com','securepass'),
-(3,'Dr. Aditi Sen','aditi.sen@example.com','password1'),
-(4,'Prof. Rakesh Verma','rakesh.verma@example.com','password2'),
-(5,'Dr. Neha Sharma','neha.sharma@example.com','password3'),
+(1,'Monali Sanyal','monali.sanyal@example.com','2004'),
+(2,'Rupashri Barik','rupashri.barik@example.com','securepass'),
+(3,'Annwesha Banerjee','annwesha.banerjee@example.com','password1'),
+(4,'Sumit Das','sumit.das@example.com','password2'),
+(5,'Sumit Das',' suparna.dasgupta@example.com','password3'),
 (6,'Prof. Kunal Roy','kunal.roy@example.com','password4'),
 (7,'Dr. Priya Nair','priya.nair@example.com','password5'),
 (8,'Prof. Ankit Das','ankit.das@example.com','password6'),
@@ -4777,11 +4777,12 @@ CREATE TABLE `students` (
 LOCK TABLES `students` WRITE;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
 INSERT INTO `students` VALUES
-(1,'Siddharth Sen','siddharth.sen@example.com','pass123'),
-(2,'Ritika Sharma','ritika.sharma@example.com','pass123'),
-(3,'di  yanshu','divyanshu@gmail.com','1234'),
-(4,'Mohit Rathi','mohit.rathi@example.com','pass123'),
-(5,'Kaustav','2004.k.c2@gmail.com','2004'),
+(1,'Kaustav Chakraborty','2004.k.c2@gmail.com','pass123'),
+(2,'Diwakar Kumar','divyanshu.singh@jisce.ac.in','pass123'),
+(3,'Divyanshu Singh','diwakar.kumar@jisce.ac.in','pass123'),
+(4,'Krish Prasad','krish.prasad@jisce.ac.in','pass123'),
+(5,'Navneet Singh Yadav','navneet.yadav@jisce.ac.in','pass123'),
+(6,'Ritwik Sen','ritwik.sen@jisce.ac.in','pass123'),
 (7,'Aarav Mehta','aarav.mehta@example.com','pass123'),
 (8,'Anaya Roy','anaya.roy@example.com','pass123'),
 (9,'Vihaan Iyer','vihaan.iyer@example.com','pass123'),
@@ -4880,4 +4881,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-07 13:58:58
+-- Dump completed on 2025-06-09 18:53:36
