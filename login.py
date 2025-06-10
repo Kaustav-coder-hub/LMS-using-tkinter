@@ -3,9 +3,7 @@ from student_ui import student_page
 from faculty_ui import faculty_page
 import tkinter as tk
 from tkinter import messagebox
-import mysql.connector
-import os
-import tkinter as tk
+import psycopg2  # replace mysql.connector
 from tkinter import messagebox, filedialog
 from session_utils import save_session, clear_session
 from db import get_connection  # Assuming db.py is in the same directory
@@ -36,12 +34,7 @@ def login():
     email = email_entry.get()
     password = pass_entry.get()
     role = role_var.get()
-    conn = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="2004",
-        database="lms"
-    )
+    conn = get_connection()
     cursor = conn.cursor()
 
     if role == "Student":

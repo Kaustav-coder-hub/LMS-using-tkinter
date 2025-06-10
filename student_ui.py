@@ -2,10 +2,10 @@ import shutil
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 from datetime import datetime, timedelta
-import mysql.connector
+import psycopg2  # replace mysql.connector
 import os
 import webbrowser
-from db import get_connection  # Assuming db.py is in the same directory
+from db import get_connection
 
 def student_page(student_id, student_name, logout_callback):
     win = tk.Tk()
@@ -25,7 +25,7 @@ def student_page(student_id, student_name, logout_callback):
         # Placeholder: Replace with DB fetch logic
         messagebox.showinfo("Course Content", "Displaying course content.")
         try:
-            conn = mysql.connector.connect(host="localhost", user="root", password="2004", database="lms")
+            conn = get_connection()
             cursor = conn.cursor()
             cursor.execute("""
                 SELECT cc.title, cc.file_path, cc.upload_date 
@@ -77,7 +77,7 @@ def student_page(student_id, student_name, logout_callback):
         course_win.geometry("400x200")
 
         # Connect DB
-        conn = mysql.connector.connect(host="localhost", user="root", password="2004", database="lms")
+        conn = get_connection()
         cursor = conn.cursor()
 
         # Get available assignments
@@ -124,7 +124,7 @@ def student_page(student_id, student_name, logout_callback):
                 shutil.copy(file_path, dest_path)
 
                 # Insert into DB
-                conn = mysql.connector.connect(host="localhost", user="root", password="2004", database="lms")
+                conn = get_connection()
                 cursor = conn.cursor()
                 cursor.execute("""
                     INSERT INTO submissions (assignment_id, student_id, file_path)
@@ -149,7 +149,7 @@ def student_page(student_id, student_name, logout_callback):
         messagebox.showinfo("Attendance", "Displaying attendance records.")
         
         try:
-            conn = mysql.connector.connect(host="localhost", user="root", password="2004", database="lms")
+            conn = get_connection()
             cursor = conn.cursor()
 
             # Get all course names and IDs
@@ -170,7 +170,7 @@ def student_page(student_id, student_name, logout_callback):
                 INNER JOIN student_courses sc ON a.course_id = sc.course_id
                 WHERE sc.student_id = %s
                 AND a.date >= %s
-                AND DAYOFWEEK(a.date) BETWEEN 2 AND 6
+                AND EXTRACT(DOW FROM a.date) BETWEEN 1 AND 5
             """, (student_id, start_date))
 
             records = cursor.fetchall()
@@ -254,7 +254,7 @@ def student_page(student_id, student_name, logout_callback):
         win.geometry("900x400")
 
         try:
-            conn = mysql.connector.connect(host="localhost", user="root", password="2004", database="lms")
+            conn = get_connection()
             cursor = conn.cursor()
 
             cursor.execute("""

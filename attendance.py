@@ -1,7 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox, ttk, Scrollbar
-import mysql.connector
+import psycopg2
 from datetime import date
+from db import get_connection
 
 def mark_attendance_ui(faculty_id):
     win = tk.Tk()
@@ -9,7 +10,7 @@ def mark_attendance_ui(faculty_id):
     win.geometry("600x600")
     win.resizable(False, False)
 
-    conn = mysql.connector.connect(host="localhost", user="root", password="2004", database="lms")
+    conn = get_connection()
     cursor = conn.cursor()
 
     course_id = faculty_id

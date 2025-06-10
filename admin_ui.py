@@ -1,16 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox, simpledialog, Toplevel, ttk
-import mysql.connector
-from db import get_connection  # Assuming db.py is in the same directory
-
-# --- DB Connection ---
-# def get_connection():
-#     return mysql.connector.connect(
-#         host="localhost",
-#         user="root",
-#         password="2004",
-#         database="lms"
-#     )
+import psycopg2
+from db import get_connection
 
 def admin_page(logout_callback):
     admin = tk.Tk()

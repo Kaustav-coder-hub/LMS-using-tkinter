@@ -1,10 +1,10 @@
-import mysql.connector
+import psycopg2
 
 def get_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="2004",
-        database="lms",
-        port=3306
+        host="dpg-d14akindiees73d3uvl0-a",
+        user="lms_uxw7_user",
+        password="yQwHBL2HHRoTtAZPc443HzHLeLwfUi0x",
+        database="lms_uxw7",
+        port=5432
     )

@@ -7,8 +7,8 @@ from tkinter import filedialog, messagebox
 from datetime import date
 from tkinter import ttk
 from attendance import mark_attendance_ui
-import mysql.connector
-from db import get_connection  # Assuming db.py is in the same directory
+import psycopg2  # replace mysql.connector
+from db import get_connection
 
 def faculty_page(faculty_id, faculty_name, logout_callback):
     win = tk.Tk()
@@ -32,7 +32,7 @@ def faculty_page(faculty_id, faculty_name, logout_callback):
             try:
                 shutil.copy(file_path, dest_path)  # copy to central folder
 
-                conn = mysql.connector.connect(host="localhost", user="root", password="2004", database="lms")
+                conn = get_connection()
                 cursor = conn.cursor()
                 cursor.execute(
                     "INSERT INTO course_content (course_id, title, file_path, upload_date) VALUES (%s, %s, %s, %s)",
@@ -65,7 +65,7 @@ def faculty_page(faculty_id, faculty_name, logout_callback):
         win.title("Evaluate Assignments")
         win.geometry("900x500")
 
-        conn = mysql.connector.connect(host="localhost", user="root", password="2004", database="lms")
+        conn = get_connection()
         cursor = conn.cursor()
 
         # Step 1: Get the faculty's course_id
